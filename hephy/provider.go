@@ -27,6 +27,9 @@ func Provider() *schema.Provider {
 				Default:  true,
 			},
 		},
+		ResourcesMap: map[string]*schema.Resource{
+			"hephy_user": resourceUser(),
+		},
 		DataSourcesMap:       map[string]*schema.Resource{},
 		ConfigureContextFunc: providerConfigure,
 	}
