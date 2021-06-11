@@ -2,7 +2,7 @@ HOSTNAME=engineyard.com
 NAMESPACE=kontainers
 NAME=hephy
 BINARY=terraform-provider-${NAME}
-VERSION=0.1.0-pre
+VERSION=0.1.0
 OS_ARCH=linux_amd64
 
 default: install
