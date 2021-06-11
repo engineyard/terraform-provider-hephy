@@ -29,6 +29,12 @@ func resourceUser() *schema.Resource {
 				Required: true,
 				ForceNew: true,
 			},
+			"creator_token": &schema.Schema{
+				Type:     schema.TypeString,
+				Optional: true,
+				Default:  "",
+				ForceNew: true,
+			},
 			"password": &schema.Schema{
 				Type:     schema.TypeString,
 				Required: true,
@@ -50,6 +56,12 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 	username := d.Get("username").(string)
 	email := d.Get("email").(string)
 	password := d.Get("password").(string)
+	creatorToken := d.Get("creator_token").(string)
+
+	// Use the specified credentials if provided
+	if len(creatorToken) > 0 {
+		client.Token = creatorToken
+	}
 
 	err := CheckConnection(client)
 	if err != nil {
@@ -77,6 +89,13 @@ func resourceUserCreate(ctx context.Context, d *schema.ResourceData, m interface
 
 func resourceUserRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	client := m.(*hephy.Client)
+
+	creatorToken := d.Get("creator_token").(string)
+
+	// Use specified credentials if provided
+	if len(creatorToken) > 0 {
+		client.Token = creatorToken
+	}
 
 	var diags diag.Diagnostics
 
@@ -114,6 +133,13 @@ func resourceUserRead(ctx context.Context, d *schema.ResourceData, m interface{}
 
 func resourceUserDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
 	client := m.(*hephy.Client)
+
+	creatorToken := d.Get("creator_token").(string)
+
+	// Use specified credentials if provided
+	if len(creatorToken) > 0 {
+		client.Token = creatorToken
+	}
 
 	var diags diag.Diagnostics
 	err := CheckConnection(client)

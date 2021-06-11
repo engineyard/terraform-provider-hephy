@@ -19,7 +19,8 @@ func Provider() *schema.Provider {
 			},
 			"admin_token": &schema.Schema{
 				Type:     schema.TypeString,
-				Required: true,
+				Optional: true,
+				Default:  "",
 			},
 			"ssl_verify": &schema.Schema{
 				Type:     schema.TypeBool,
