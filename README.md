@@ -4,8 +4,9 @@ This repository contains a terraform provider for interacting with Hephy cluster
 
 The terraform provider implements 1 resources currently:
 
+* `hephy_initial_admin` Manage the initial admin of a hephy cluster
 * `hephy_user` Manage a user on a hephy cluster
-* `hephy_ssh_key` Manage an SSH key for a user on a hephy cluster
+* `hephy_key` Manage an SSH key for a user on a hephy cluster
 
 Check the `docs` folder for detailed documentation of the Terraform Provider.
 
