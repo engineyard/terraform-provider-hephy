@@ -11,3 +11,7 @@ The terraform provider implements 1 resources currently:
 Check the `docs` folder for detailed documentation of the Terraform Provider.
 
 As the hephy controller API does not support `update` for most objects, such operations have been omitted from the resources implemented, so any update of those resources will cause a delete/create.
+
+## History ##
+
+* v0.1.0 - Initial internal release
